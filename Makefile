@@ -339,7 +339,7 @@ zip:
 
 $(BLD_DIR)/$(OUT): $(OBJECTS)
 	@printf "Linking object files... "
-	@$(CC) $(C_FLAGS) $(CFLAGS) -o $(BLD_DIR)/$(OUT) $^
+	@$(CC) $^ $(C_FLAGS) $(CFLAGS) -o $(BLD_DIR)/$(OUT) 
 	@printf "\n"
 	@printf "====================\n"
 	@printf " COMPILING COMPLETE \n"
