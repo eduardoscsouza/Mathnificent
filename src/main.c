@@ -1,8 +1,12 @@
 #include <GL/glut.h>
 
-void draw(void) {}
+void draw(void)
+{
 
-int main(int argc, char *argv[]) {
+}
+
+int main(int argc, char *argv[])
+{
     glutInit(&argc, argv);
     glutCreateWindow("Teste");
 
