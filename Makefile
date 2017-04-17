@@ -53,9 +53,12 @@ CC := gcc
 
 
 #
-# Regular expression describing source files in `SRC_DIR`
+# Expressions which describe source and compiled files
 #
-SRC_PTRN := "*.c"
+SRC_FILE := cpp
+COMP_FILE := o
+
+SRC_PTRN := "*."$(SRC_FILE)
 
 
 #
@@ -242,8 +245,8 @@ case_ofile = $(1:%=%.out)
 SOURCES := $(shell find $(SRC_DIR) -name $(SRC_PTRN) 2> /dev/null)
 
 
-OBJECTS := $(SOURCES:%.c=%.o)
-DEPS := $(SOURCES:%.c=%.d)
+OBJECTS := $(addsuffix .$(COMP_FILE), $(basename $(SOURCES)))
+DEPS := $(addsuffix .d, $(basename $(SOURCES)))
 
 # Add $(OBJ_DIR)/ as a prefix to each object file bare name
 OBJECTS := $(addprefix $(OBJ_DIR)/,$(notdir $(OBJECTS)))
@@ -303,7 +306,6 @@ RUN_CMD += < $(I_FILE)
 endif
 
 
-
 all: $(BLD_DIR)/$(OUT)
 
 g: clean all
@@ -322,7 +324,7 @@ test: run
 
 clean:
 	-@rm -f $(ZIP).zip
-	-@rm -f $(OBJ_DIR)/*.o
+	-@rm -f $(OBJ_DIR)/*.$(COMP_FILE)
 	-@rm -f $(DEP_DIR)/*.d
 	-@rm -f --preserve-root $(BLD_DIR)/*
 
@@ -334,7 +336,7 @@ rebuild: clean all
 
 zip:
 	@zip -9q $(ZIP).zip $(BLD_DIR)/.gitkeep $(firstword $(MAKEFILE_LIST)) -r \
-	    $(INC_DIR)/ $(SRC_DIR)/ $(LIB_DIR)/ $(TST_DIR)/ -x \*.o \*.d
+	    $(INC_DIR)/ $(SRC_DIR)/ $(LIB_DIR)/ $(TST_DIR)/ -x \*.$(COMP_FILE) \*.d
 
 
 $(BLD_DIR)/$(OUT): $(OBJECTS)
@@ -345,13 +347,13 @@ $(BLD_DIR)/$(OUT): $(OBJECTS)
 	@printf " COMPILING COMPLETE \n"
 	@printf "====================\n\n"
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.$(COMP_FILE):
 	@printf "Building -%s-... " $(notdir $(basename $<))
 	@$(CC) $(C_FLAGS) $(CFLAGS) -c -o $@ $<
 	@printf "Done.\n"
 
-$(DEP_DIR)/%.d: %.c
-	@$(CC) $(C_FLAGS) -MM -MT'$(OBJ_DIR)/$(notdir $(@:%.d=%.o))' $< > $@
+$(DEP_DIR)/%.d: %.$(SRC_FILE)
+	@$(CC) $(C_FLAGS) -MM -MT'$(OBJ_DIR)/$(notdir $(@:%.d=%.$(COMP_FILE)))' $< > $@
 
 include $(DEPS)
 

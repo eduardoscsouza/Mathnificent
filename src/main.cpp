@@ -1,5 +1,7 @@
 #include <GL/glut.h>
 
+#include "test.h"
+
 void draw(void) {}
 
 int main(int argc, char *argv[]) {
