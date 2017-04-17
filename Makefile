@@ -65,7 +65,7 @@ SRC_PTRN := "*.c"
 #     LIBS := m GL
 #
 
-LIBS :=
+LIBS := GL glut
 
 
 #
