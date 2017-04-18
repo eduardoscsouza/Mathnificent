@@ -1,7 +1,7 @@
 #include "polygon.hpp"
+#include <GL/gl.h>
 
 #include <algorithm>
-#include <stdio.h>
 
 using namespace std;
 
@@ -20,19 +20,17 @@ Polygon::Polygon(const vector<Point>& p, bool fill)
 
 void Polygon::draw(void) const
 {
-    printf("<polygon");
-    if (this->fill)
-        printf(" fill=true");
-    printf(">\n");
-    for_each(
-        this->vertices.begin(),
-        this->vertices.end(),
-        [](const Point& p)
-        {
-            printf("%.2f, %.2f\n", p.x, p.y);
-        }
-    );
-    printf("</polygon>\n");
+    glBegin(this->fill ? GL_POLYGON : GL_LINE_STRIP);
+        for_each(
+            this->vertices.begin(),
+            this->vertices.end(),
+            [](Point p)
+            {
+                glVertex3f(p.x, p.y, p.z);
+            }
+        );
+        glVertex3f(this->vertices[0].x, this->vertices[0].y, this->vertices[0].z);
+    glEnd();
 }
 
 Point& Polygon::operator[](int i)
