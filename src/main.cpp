@@ -12,7 +12,8 @@ Drawable *d;
 
 using namespace std;
 
-void render(void) {
+void render(void)
+{
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT);
     d->draw();
