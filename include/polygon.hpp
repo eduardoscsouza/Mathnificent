@@ -7,7 +7,8 @@
 #include "drawable.hpp"
 #include "point.hpp"
 
-class Polygon: public Drawable {
+class Polygon: public Drawable
+{
     private:
         std::vector<Point> points;
 

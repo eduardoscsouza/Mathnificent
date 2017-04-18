@@ -2,7 +2,8 @@
 
 #include "polygon.hpp"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     Polygon p(
         {
             {1, 1},

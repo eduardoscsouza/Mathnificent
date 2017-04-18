@@ -2,7 +2,8 @@
 #ifndef POINT_HPP
 #define POINT_HPP 1
 
-class Point {
+class Point
+{
     public:
         const float x;
         const float y;
