@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 
 #include "polygon.hpp"
+#include "line.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -12,5 +13,11 @@ int main(int argc, char *argv[])
         }
     );
     p.draw();
+
+    Line l(
+        0, 0,
+        1, 2
+    );
+    l.draw();
     return 0;
 }
