@@ -1,14 +1,15 @@
 #include <GL/glut.h>
 
-#include "test.h"
-
-void draw(void) {}
+#include "polygon.hpp"
 
 int main(int argc, char *argv[]) {
-    glutInit(&argc, argv);
-    glutCreateWindow("Teste");
-
-    glutDisplayFunc(&draw);
-    glutMainLoop();
+    Polygon p(
+        {
+            {1, 1},
+            {0, .5f},
+            {0, 0}
+        }
+    );
+    p.draw();
     return 0;
 }

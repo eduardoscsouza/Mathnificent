@@ -49,7 +49,7 @@ ZIP := proj.zip
 #
 # Compiler
 #
-CC := gcc
+CC := g++
 
 
 #
@@ -75,7 +75,7 @@ LIBS := GL glut
 # Compile flags
 #
 
-C_FLAGS = -L$(LIB_DIR) -I$(INC_DIR) $(addprefix -l,$(LIBS))
+C_FLAGS = -std=c++11 -L$(LIB_DIR) -I$(INC_DIR) $(addprefix -l,$(LIBS))
 
 
 #
