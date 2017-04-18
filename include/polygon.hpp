@@ -11,10 +11,11 @@ class Polygon: public Drawable
 {
     private:
         std::vector<Point> points;
+        bool fill;
 
     public:
-        Polygon(std::size_t nPoints, Point *p);
-        Polygon(const std::vector<Point>& p);
+        Polygon(std::size_t nPoints, Point *p, bool fill=false);
+        Polygon(const std::vector<Point>& p, bool fill=false);
 
         void draw(void) const override;
 };
