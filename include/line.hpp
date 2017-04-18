@@ -2,17 +2,19 @@
 #ifndef LINE_HPP
 #define LINE_HPP 1
 
+#include <vector>
+
 #include "point.hpp"
 #include "drawable.hpp"
 
 class Line : public Drawable
 {
-    public:
-        const Point p1;
-        const Point p2;
+    private:
+        std::vector<Point> points;
 
-        Line(const Point& p1, const Point& p2) : p1(p1), p2(p2) {}
-        Line(float x1, float y1, float x2, float y2) : p1(Point(x1, y1)), p2(Point(x2, y2)) {}
+    public:
+        Line(std::size_t nPoints, const Point * const p);
+        Line(const std::vector<Point>& p);
 
         void draw(void) const override;
 };

@@ -8,14 +8,14 @@
 
 #define N 10
 
-Polygon *p;
+Drawable *d;
 
 using namespace std;
 
 void render(void) {
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT);
-    p->draw();
+    d->draw();
 
     glFlush();
 }
@@ -23,9 +23,14 @@ void render(void) {
 int main(int argc, char *argv[])
 {
     vector<Point> v;
-    for (int i = 0; i < N; i++)
-        v.push_back({(float) cos(2*i * M_PI/N), (float) sin(2*i * M_PI/N)});
-    p = new Polygon(v, true);
+    for (int i = 0; i < 3*N; i++)
+        v.push_back(
+            {
+                (float) (1.f/(1+i) * cos(2*i * M_PI/N)),
+                (float) (1.f/(1+i) * sin(2*i * M_PI/N))
+            }
+        );
+    d = new Line(v);
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA);
@@ -39,7 +44,7 @@ int main(int argc, char *argv[])
 
     glutMainLoop();
 
-    delete p;
+    delete d;
 
     return 0;
 }
