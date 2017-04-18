@@ -3,8 +3,8 @@
 #include <cstdio>
 #include <cmath>
 
-#include "polygon.hpp"
-#include "line.hpp"
+#include "core/polygon.hpp"
+#include "core/line.hpp"
 
 #define N 10
 
@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
                 (float) (1.f/(1+i) * sin(2*i * M_PI/N))
             }
         );
+
     d = new Line(v);
 
     glutInit(&argc, argv);

@@ -4,8 +4,8 @@
 
 #include <vector>
 
-#include "point.hpp"
-#include "drawable.hpp"
+#include "core/point.hpp"
+#include "core/drawable.hpp"
 
 class Line : public Drawable
 {

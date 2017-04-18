@@ -1,7 +1,7 @@
-#include "polygon.hpp"
 #include <GL/gl.h>
-
 #include <algorithm>
+
+#include "core/polygon.hpp"
 
 using namespace std;
 

@@ -355,7 +355,9 @@ $(OBJ_DIR)/%.$(COMP_FILE):
 $(DEP_DIR)/%.d: %.$(SRC_FILE)
 	@$(CC) $(C_FLAGS) -MM -MT'$(OBJ_DIR)/$(notdir $(@:%.d=%.$(COMP_FILE)))' $< > $@
 
+ifeq (,$(findstring clean,$(MAKECMDGOALS)))
 include $(DEPS)
+endif
 
 .gitignore:
 	@echo "$(OBJ_DIR:./%=/%)/*" >> .gitignore

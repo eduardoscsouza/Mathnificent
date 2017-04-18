@@ -4,8 +4,8 @@
 
 #include <vector>
 
-#include "drawable.hpp"
-#include "point.hpp"
+#include "core/drawable.hpp"
+#include "core/point.hpp"
 
 class Polygon: public Drawable
 {

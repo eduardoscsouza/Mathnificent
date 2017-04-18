@@ -1,7 +1,7 @@
-#include <GL/glut.h>
+#include <GL/gl.h>
 #include <algorithm>
 
-#include "line.hpp"
+#include "core/line.hpp"
 
 using namespace std;
 
