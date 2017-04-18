@@ -35,6 +35,7 @@ void Polygon::draw(void) const
     printf("</polygon>\n");
 }
 
-Point& Polygon::operator[](int i) {
+Point& Polygon::operator[](int i)
+{
     return this->vertices[i];
 }
