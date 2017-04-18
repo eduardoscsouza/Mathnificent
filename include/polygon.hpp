@@ -11,13 +11,15 @@ class Polygon: public Drawable
 {
     private:
         std::vector<Point> vertices;
-        bool fill;
 
     public:
-        Polygon(std::size_t nPoints, Point *p, bool fill=false);
+        bool fill;
+
+        Polygon(std::size_t nPoints, const Point * const p, bool fill=false);
         Polygon(const std::vector<Point>& p, bool fill=false);
 
         void draw(void) const override;
+        Point& operator[](int i);
 };
 
 

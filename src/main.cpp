@@ -1,4 +1,5 @@
 #include <GL/glut.h>
+#include <stdio.h>
 
 #include "polygon.hpp"
 #include "line.hpp"
@@ -19,5 +20,6 @@ int main(int argc, char *argv[])
         1, 2
     );
     l.draw();
+
     return 0;
 }

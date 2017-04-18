@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Polygon::Polygon(size_t nPoints, Point *p, bool fill)
+Polygon::Polygon(size_t nPoints, const Point * const p, bool fill)
 {
     for (size_t i = 0; i < nPoints; i++)
         this->vertices.push_back(p[i]);
@@ -33,4 +33,8 @@ void Polygon::draw(void) const
         }
     );
     printf("</polygon>\n");
+}
+
+Point& Polygon::operator[](int i) {
+    return this->vertices[i];
 }

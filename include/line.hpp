@@ -7,11 +7,10 @@
 
 class Line : public Drawable
 {
-    private:
+    public:
         const Point p1;
         const Point p2;
 
-    public:
         Line(const Point& p1, const Point& p2) : p1(p1), p2(p2) {}
         Line(float x1, float y1, float x2, float y2) : p1(Point(x1, y1)), p2(Point(x2, y2)) {}
 
