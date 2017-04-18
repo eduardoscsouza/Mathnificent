@@ -5,7 +5,8 @@
 #include "point.hpp"
 #include "drawable.hpp"
 
-class Line : public Drawable {
+class Line : public Drawable
+{
     private:
         const Point p1;
         const Point p2;
