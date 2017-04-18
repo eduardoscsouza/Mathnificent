@@ -10,7 +10,7 @@
 class Polygon: public Drawable
 {
     private:
-        std::vector<Point> points;
+        std::vector<Point> vertices;
         bool fill;
 
     public:
