@@ -67,7 +67,7 @@ class Vector
 
         Vector normalized(void) const
         {
-            return *this / this->norm;
+            return *this / this->norm();
         }
 
         Vector project(const Vector& v) const
