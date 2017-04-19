@@ -34,7 +34,6 @@ int main(int argc, char *argv[])
         );
 
     scene = new Group({new Line(v)});
-    v.clear();
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA);
