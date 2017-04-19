@@ -5,10 +5,11 @@
 
 #include "core/polygon.hpp"
 #include "core/line.hpp"
+#include "core/group.hpp"
 
 #define N 10
 
-Drawable *d;
+Group *scene;
 
 using namespace std;
 
@@ -16,7 +17,7 @@ void render(void)
 {
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT);
-    d->draw();
+    scene->draw();
 
     glFlush();
 }
@@ -32,7 +33,8 @@ int main(int argc, char *argv[])
             }
         );
 
-    d = new Line(v);
+    scene = new Group({new Line(v)});
+    v.clear();
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA);
@@ -46,7 +48,8 @@ int main(int argc, char *argv[])
 
     glutMainLoop();
 
-    delete d;
+    scene->destroyObjects();
+    delete scene;
 
     return 0;
 }
