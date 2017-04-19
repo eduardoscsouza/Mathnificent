@@ -82,7 +82,7 @@ class Vector
 
         bool operator!=(const Vector& p) const
         {
-            return this->x != p.x || this->y != p.y || this->z == p.z;
+            return this->x != p.x || this->y != p.y || this->z != p.z;
         }
 };
 
