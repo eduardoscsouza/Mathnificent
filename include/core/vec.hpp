@@ -52,7 +52,27 @@ class Vector
 
         friend const Vector operator*(float f, const Vector& v)
         {
-            return v * f;
+            return Vector(v.x * f, v.y * f, v.z * f);
+        }
+
+        float operator*(const Vector& v)
+        {
+            return this->x*v.x + this->y*v.y + this->z*v.z;
+        }
+
+        const Vector operator/(float f)
+        {
+            return Vector(this->x / f, this->y / f, this->z / f);
+        }
+
+        const Vector operator^(const Vector& v)
+        {
+            return Vector
+            (
+                this->y*v.z - this->z*v.y,
+                this->z*v.x - this->x*v.z,
+                this->x*v.y - this->y*v.x
+            );
         }
 
         bool operator==(const Vector& p) const
