@@ -9,7 +9,7 @@
 #include "core/point.hpp"
 
 
-#define POLY_DEFAULT_FILL false
+#define POLY_DEFAULT_FILL true
 
 class Polygon: public Drawable
 {
