@@ -5,8 +5,8 @@
 #include <vector>
 #include <initializer_list>
 
-#include "core/vec.hpp"
-#include "core/drawable.hpp"
+#include "draw/vec.hpp"
+#include "draw/drawable.hpp"
 
 class Line : public Drawable
 {

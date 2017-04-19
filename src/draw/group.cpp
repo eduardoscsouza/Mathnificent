@@ -1,7 +1,7 @@
 #include <GL/gl.h>
 #include <algorithm>
 
-#include "core/group.hpp"
+#include "draw/group.hpp"
 
 using namespace std;
 

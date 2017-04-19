@@ -5,7 +5,7 @@
 #include <vector>
 #include <initializer_list>
 
-#include "core/drawable.hpp"
+#include "draw/drawable.hpp"
 
 class Group : public Drawable {
     private:

@@ -1,7 +1,7 @@
 #include <GL/gl.h>
 #include <algorithm>
 
-#include "core/line.hpp"
+#include "draw/line.hpp"
 
 using namespace std;
 

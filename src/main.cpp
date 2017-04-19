@@ -3,10 +3,9 @@
 #include <cstdio>
 #include <cmath>
 
-#include "core/line.hpp"
-#include "core/group.hpp"
-
-#include "poly/polygon.hpp"
+#include "draw/line.hpp"
+#include "draw/group.hpp"
+#include "draw/polygon.hpp"
 
 #define N 10
 

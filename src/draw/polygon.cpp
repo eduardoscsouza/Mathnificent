@@ -1,7 +1,7 @@
 #include <GL/gl.h>
 #include <algorithm>
 
-#include "poly/polygon.hpp"
+#include "draw/polygon.hpp"
 
 using namespace std;
 

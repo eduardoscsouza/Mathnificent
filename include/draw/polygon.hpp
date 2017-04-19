@@ -5,8 +5,8 @@
 #include <vector>
 #include <initializer_list>
 
-#include "core/drawable.hpp"
-#include "core/vec.hpp"
+#include "draw/drawable.hpp"
+#include "draw/vec.hpp"
 
 
 #define POLY_DEFAULT_FILL true
