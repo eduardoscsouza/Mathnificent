@@ -16,6 +16,11 @@ Line::Line(const vector<Point>& p)
     this->points = vector<Point>(p);
 }
 
+Line::Line(initializer_list<Point> p)
+{
+    this->points = vector<Point>(p);
+}
+
 void Line::draw(void) const
 {
     glBegin(GL_LINE_STRIP);

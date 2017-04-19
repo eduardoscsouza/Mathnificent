@@ -18,6 +18,12 @@ Polygon::Polygon(const vector<Point>& p, bool fill)
     this->fill = fill;
 }
 
+Polygon::Polygon(initializer_list<Point> p, bool fill)
+{
+    this->vertices = vector<Point>(p);
+    this->fill = fill;
+}
+
 void Polygon::draw(void) const
 {
     glBegin(this->fill ? GL_POLYGON : GL_LINE_STRIP);
