@@ -3,9 +3,10 @@
 #include <cstdio>
 #include <cmath>
 
-#include "core/polygon.hpp"
 #include "core/line.hpp"
 #include "core/group.hpp"
+
+#include "poly/polygon.hpp"
 
 #define N 10
 
@@ -24,7 +25,7 @@ void render(void)
 
 int main(int argc, char *argv[])
 {
-    vector<Point> v;
+    vector<Vector> v;
     for (int i = 0; i < 3*N; i++)
         v.push_back(
             {

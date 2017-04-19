@@ -5,20 +5,20 @@
 
 using namespace std;
 
-Line::Line(size_t nPoints, const Point * const p)
+Line::Line(size_t nVectors, const Vector * const p)
 {
-    for (size_t i = 0; i < nPoints; i++)
+    for (size_t i = 0; i < nVectors; i++)
         this->points.push_back(p[i]);
 }
 
-Line::Line(const vector<Point>& p)
+Line::Line(const vector<Vector>& p)
 {
-    this->points = vector<Point>(p);
+    this->points = vector<Vector>(p);
 }
 
-Line::Line(initializer_list<Point> p)
+Line::Line(initializer_list<Vector> p)
 {
-    this->points = vector<Point>(p);
+    this->points = vector<Vector>(p);
 }
 
 void Line::draw(void) const
@@ -27,7 +27,7 @@ void Line::draw(void) const
         for_each(
             this->points.begin(),
             this->points.end(),
-            [](Point p)
+            [](Vector p)
             {
                 glVertex3f(p.x, p.y, p.z);
             }

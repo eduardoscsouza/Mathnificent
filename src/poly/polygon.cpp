@@ -1,26 +1,26 @@
 #include <GL/gl.h>
 #include <algorithm>
 
-#include "core/polygon.hpp"
+#include "poly/polygon.hpp"
 
 using namespace std;
 
-Polygon::Polygon(size_t nPoints, const Point * const p, bool fill)
+Polygon::Polygon(size_t nVectors, const Vector * const p, bool fill)
 {
-    for (size_t i = 0; i < nPoints; i++)
+    for (size_t i = 0; i < nVectors; i++)
         this->vertices.push_back(p[i]);
     this->fill = fill;
 }
 
-Polygon::Polygon(const vector<Point>& p, bool fill)
+Polygon::Polygon(const vector<Vector>& p, bool fill)
 {
-    this->vertices = vector<Point>(p);
+    this->vertices = vector<Vector>(p);
     this->fill = fill;
 }
 
-Polygon::Polygon(initializer_list<Point> p, bool fill)
+Polygon::Polygon(initializer_list<Vector> p, bool fill)
 {
-    this->vertices = vector<Point>(p);
+    this->vertices = vector<Vector>(p);
     this->fill = fill;
 }
 
@@ -30,7 +30,7 @@ void Polygon::draw(void) const
         for_each(
             this->vertices.begin(),
             this->vertices.end(),
-            [](Point p)
+            [](Vector p)
             {
                 glVertex3f(p.x, p.y, p.z);
             }
@@ -39,7 +39,7 @@ void Polygon::draw(void) const
     glEnd();
 }
 
-Point& Polygon::operator[](int i)
+Vector& Polygon::operator[](int i)
 {
     return this->vertices[i];
 }

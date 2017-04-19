@@ -5,18 +5,18 @@
 #include <vector>
 #include <initializer_list>
 
-#include "core/point.hpp"
+#include "core/vec.hpp"
 #include "core/drawable.hpp"
 
 class Line : public Drawable
 {
     private:
-        std::vector<Point> points;
+        std::vector<Vector> points;
 
     public:
-        Line(std::size_t nPoints, const Point * const p);
-        Line(const std::vector<Point>& p);
-        Line(std::initializer_list<Point> p);
+        Line(std::size_t nVectors, const Vector * const p);
+        Line(const std::vector<Vector>& p);
+        Line(std::initializer_list<Vector> p);
 
         void draw(void) const override;
 };
