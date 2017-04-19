@@ -65,6 +65,16 @@ class Vector
             );
         }
 
+        Vector normalized(void) const
+        {
+            return *this / this->norm;
+        }
+
+        Vector project(const Vector& v) const
+        {
+            return v * (*this * v) / v.norm2();
+        }
+
 
         const Vector operator+(const Vector& v) const
         {
