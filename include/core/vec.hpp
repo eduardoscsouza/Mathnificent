@@ -86,6 +86,11 @@ class Vector
             return this->add(v);
         }
 
+        const Vector operator+(void) const
+        {
+            return *this;
+        }
+
 
         const Vector operator-(const Vector& v) const
         {
