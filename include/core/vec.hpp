@@ -21,12 +21,17 @@ class Vector
 
         float norm2(void) const
         {
-            return this->x*this->x + this->y*this->y + this->z*this->z;
+            return *this * *this;
         }
 
         float dist(const Vector& v) const
         {
             return (*this - v).norm();
+        }
+
+        float dist2(const Vector& v) const
+        {
+            return (*this - v).norm2();
         }
 
 
