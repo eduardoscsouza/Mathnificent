@@ -7,7 +7,8 @@
 #include "draw/group.hpp"
 #include "draw/polygon.hpp"
 
-#define N 10
+#define N 300
+#define TURNS 3
 
 Group *scene;
 
@@ -25,11 +26,11 @@ void render(void)
 int main(int argc, char *argv[])
 {
     vector<Vector> v;
-    for (int i = 0; i < 3*N; i++)
+    for (int i = 0; i < N*TURNS; i++)
         v.push_back(
             {
-                (float) (1.f/(1+i) * cos(2*i * M_PI/N)),
-                (float) (1.f/(1+i) * sin(2*i * M_PI/N))
+                (float) (exp((float)-i/(N)) * cos(i * 2*M_PI*TURNS / N)),
+                (float) (exp((float)-i/(N)) * sin(i * 2*M_PI*TURNS / N))
             }
         );
 
@@ -37,10 +38,11 @@ int main(int argc, char *argv[])
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA);
-    glutCreateWindow("Test");
 
     glutInitWindowSize(500, 500);
     gluOrtho2D(-1, 1, -1, 1);
+
+    glutCreateWindow("Test");
 
     glClearColor(.05f, .05f, .05f, 1.f);
     glutDisplayFunc(&render);
