@@ -34,3 +34,8 @@ void Line::draw(void) const
         );
     glEnd();
 }
+
+Vector& Line::operator[](int i)
+{
+    return this->points[i];
+}

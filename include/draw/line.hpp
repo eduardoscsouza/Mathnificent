@@ -19,6 +19,7 @@ class Line : public Drawable
         Line(std::initializer_list<Vector> p);
 
         void draw(void) const override;
+        Vector& operator[](int i);
 };
 
 #endif

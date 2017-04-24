@@ -9,11 +9,11 @@
 namespace Scene
 {
     void init(void);
+    void init(int *argc, char *argv[]);
 
     void draw(void);
 
     void start(const char *title);
-    void start(const char *title, int *argc, char *argv[]);
 
     void add(Drawable *d);
     void add(const std::vector<Drawable*>& d);

@@ -8,7 +8,6 @@
 #include "draw/polygon.hpp"
 #include "draw/scene.hpp"
 
-#define M 3
 #define N 300
 
 using namespace std;
@@ -16,13 +15,17 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     vector<Vector> v;
-    for (int i = 0; i < N*M; i++)
-        v.push_back(
+    for (int i = 0; i < N; i++)
+    {
+        float t = (float) (2*M_PI * ((float)i/N));
+        v.push_back
+        (
             {
-                (float) (exp((float)-i/N) * cos(i * 2*M_PI*M / N)),
-                (float) (exp((float)-i/N) * sin(i * 2*M_PI*M / N))
+                (float) (2*cos(t) - cos(2*t)) / 4,
+                (float) (2*sin(t) - sin(2*t)) / 4
             }
         );
+    }
 
     Scene::init();
     Scene::add(new Line(v));
