@@ -11,6 +11,8 @@ namespace Scene
     void init(void);
     void init(int *argc, char *argv[]);
 
+    void setCoordsLim(float xmin, float xmax, float ymin, float ymax);
+
     void draw(void);
 
     void start(const char *title);

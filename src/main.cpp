@@ -21,13 +21,15 @@ int main(int argc, char *argv[])
         v.push_back
         (
             {
-                (float) (2*cos(t) - cos(2*t)) / 4,
-                (float) (2*sin(t) - sin(2*t)) / 4
+                (float) (2*cos(t) - cos(2*t)),
+                (float) (2*sin(t) - sin(2*t))
             }
         );
     }
 
     Scene::init();
+    Scene::setCoordsLim(-4, 4, -4, 4);
+
     Scene::add(new Line(v));
 
     Scene::start("Test");
