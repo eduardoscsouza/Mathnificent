@@ -18,6 +18,7 @@ class Group : public Drawable {
 
         void draw(void) const override;
         void add(Drawable *d);
+        void add(const std::vector<Drawable*>& d);
 
         void destroyObjects(void);
 };

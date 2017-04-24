@@ -32,6 +32,11 @@ void Group::add(Drawable *d)
     this->objects.push_back(d);
 }
 
+void Group::add(const vector<Drawable*>& d)
+{
+    this->objects.insert(this->objects.end(), d.begin(), d.end());
+}
+
 void Group::destroyObjects(void)
 {
     for_each(
