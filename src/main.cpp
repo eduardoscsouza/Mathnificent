@@ -40,17 +40,14 @@ int main(int argc, char *argv[])
         [&angle](float t, float dt)
         {
             angle = t*DEG_PER_SEC;
-            cout << t << endl;
         },
-        [angle](void)
+        [&angle](void)
         {
-            cout << "predraw" << endl;
             glPushMatrix();
             glRotatef(angle, 0.f, 0.f, 1.f);
         },
         [](void)
         {
-            cout << "postdraw" << endl;
             glPopMatrix();
         }
     ));

@@ -17,15 +17,14 @@ static float ymin = -1;
 static float ymax = 1;
 
 static chrono::time_point<Clock> frameStart;
+static chrono::time_point<Clock> frameEnd;
 
 static float t;
 
 void updateScene(void)
 {
-    chrono::time_point<Clock> frameEnd = Clock::now();
-
-    chrono::milliseconds d = chrono::duration_cast<chrono::milliseconds>(frameEnd - frameStart);
-    float dt = d.count() / 1000.f;
+    chrono::duration<float, std::milli> d = frameEnd - frameStart;
+    float dt = d.count() / 10.f;
     t += dt;
 
     Scene::objects->update(t, dt);
@@ -36,6 +35,11 @@ void updateScene(void)
 void preDrawScene(void)
 {
     frameStart = Clock::now();
+}
+
+void postDrawScene(void)
+{
+    frameEnd = Clock::now();
 }
 
 void drawScene(void)
@@ -53,7 +57,7 @@ void Scene::init(void)
 
 void Scene::init(int *argc, char *argv[])
 {
-    objects = new Group(nullptr, &preDrawScene);
+    objects = new Group(nullptr, &preDrawScene, &postDrawScene);
     t = 0;
 
     glutInit(argc, argv);
