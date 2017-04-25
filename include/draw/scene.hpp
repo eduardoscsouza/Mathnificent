@@ -5,9 +5,12 @@
 #include <vector>
 
 #include "draw/drawable.hpp"
+#include "draw/group.hpp"
 
 namespace Scene
 {
+    extern Group *objects;
+
     void init(void);
     void init(int *argc, char *argv[]);
 
@@ -17,11 +20,7 @@ namespace Scene
 
     void start(const char *title);
 
-    void add(Drawable *d);
-    void add(const std::vector<Drawable*>& d);
-
-    void destroyObjects(void);
-    void cleanup(void);
+    void cleanup(bool destroyObjects=false);
 };
 
 #endif

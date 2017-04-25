@@ -30,12 +30,11 @@ int main(int argc, char *argv[])
     Scene::init();
     Scene::setCoordsLim(-4, 4, -4, 4);
 
-    Scene::add(new Line(v));
+    Scene::objects->add(new Line(v));
 
     Scene::start("Test");
 
-    Scene::destroyObjects();
-    Scene::cleanup();
+    Scene::cleanup(true);
 
     return 0;
 }

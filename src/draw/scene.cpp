@@ -6,7 +6,7 @@
 
 using namespace std;
 
-static Group *scene;
+Group * Scene::objects;
 
 static float xmin = -1;
 static float xmax = 1;
@@ -21,7 +21,7 @@ void Scene::init(void)
 
 void Scene::init(int *argc, char *argv[])
 {
-    scene = new Group();
+    objects = new Group();
 
     glutInit(argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
@@ -39,7 +39,7 @@ void Scene::setCoordsLim(float x, float X, float y, float Y)
 
 void Scene::draw(void)
 {
-    scene->draw();
+    objects->draw();
     glutSwapBuffers();
     glFlush();
 }
@@ -54,22 +54,9 @@ void Scene::start(const char *title)
     glutMainLoop();
 }
 
-void Scene::add(Drawable *d)
+void Scene::cleanup(bool destroyObjects)
 {
-    scene->add(d);
-}
-
-void Scene::add(const vector<Drawable*>& obj)
-{
-    scene->add(obj);
-}
-
-void Scene::destroyObjects(void)
-{
-    scene->destroyObjects();
-}
-
-void Scene::cleanup(void)
-{
-    delete scene;
+    if (destroyObjects)
+        objects->destroyObjects();
+    delete objects;
 }
