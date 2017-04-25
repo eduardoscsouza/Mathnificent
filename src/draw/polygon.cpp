@@ -5,23 +5,23 @@
 
 using namespace std;
 
-Polygon::Polygon(size_t nVectors, const Vector * const p, bool fill, UpdateFunction update)
-    : Drawable(update)
+Polygon::Polygon(size_t nVectors, const Vector * const p, bool fill, UpdateFunction update, PreDrawFunction preDraw)
+    : Drawable(update, preDraw)
 {
     for (size_t i = 0; i < nVectors; i++)
         this->vertices.push_back(p[i]);
     this->fill = fill;
 }
 
-Polygon::Polygon(const vector<Vector>& p, bool fill, UpdateFunction update)
-    : Drawable(update)
+Polygon::Polygon(const vector<Vector>& p, bool fill, UpdateFunction update, PreDrawFunction preDraw)
+    : Drawable(update, preDraw)
 {
     this->vertices = vector<Vector>(p);
     this->fill = fill;
 }
 
-Polygon::Polygon(initializer_list<Vector> p, bool fill, UpdateFunction update)
-    : Drawable(update)
+Polygon::Polygon(initializer_list<Vector> p, bool fill, UpdateFunction update, PreDrawFunction preDraw)
+    : Drawable(update, preDraw)
 {
     this->vertices = vector<Vector>(p);
     this->fill = fill;
@@ -29,6 +29,7 @@ Polygon::Polygon(initializer_list<Vector> p, bool fill, UpdateFunction update)
 
 void Polygon::draw(void) const
 {
+    Drawable::draw();
     glBegin(this->fill ? GL_POLYGON : GL_LINE_STRIP);
         for_each(
             this->vertices.begin(),

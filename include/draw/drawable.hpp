@@ -4,20 +4,24 @@
 
 #include <functional>
 
+#include <iostream>
+
 class Drawable
 {
-    private:
-        std::function<void(float, float)> updateFunc;
-
     public:
         typedef std::function<void(float, float)> UpdateFunction;
+        typedef std::function<void(void)> PreDrawFunction;
 
-        Drawable(void) {}
-        Drawable(UpdateFunction update) : updateFunc(update) {}
+        Drawable(UpdateFunction update=nullptr, PreDrawFunction=nullptr);
 
         virtual void draw(void) const = 0;
+
+        void preDraw(void) const;
         void update(float t, float dt);
-        void setUpdateFunc(UpdateFunction update);
+
+    private:
+        UpdateFunction updateFunc;
+        PreDrawFunction preDrawFunc;
 };
 
 #endif

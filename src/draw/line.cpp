@@ -5,27 +5,29 @@
 
 using namespace std;
 
-Line::Line(size_t nVectors, const Vector * const p, UpdateFunction update)
-    : Drawable(update)
+Line::Line(size_t nVectors, const Vector * const p, UpdateFunction update, PreDrawFunction preDraw)
+    : Drawable(update, preDraw)
 {
     for (size_t i = 0; i < nVectors; i++)
         this->points.push_back(p[i]);
 }
 
-Line::Line(const vector<Vector>& p, UpdateFunction update)
-    : Drawable(update)
+Line::Line(const vector<Vector>& p, UpdateFunction update, PreDrawFunction preDraw)
+    : Drawable(update, preDraw)
 {
     this->points = vector<Vector>(p);
 }
 
-Line::Line(initializer_list<Vector> p, UpdateFunction update)
-    : Drawable(update)
+Line::Line(initializer_list<Vector> p, UpdateFunction update, PreDrawFunction preDraw)
+    : Drawable(update, preDraw)
 {
     this->points = vector<Vector>(p);
 }
 
 void Line::draw(void) const
 {
+    Drawable::draw();
+    preDraw();
     glBegin(GL_LINE_STRIP);
         for_each(
             this->points.begin(),

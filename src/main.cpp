@@ -3,6 +3,8 @@
 #include <cstdio>
 #include <cmath>
 
+#include <algorithm>
+
 #include "draw/line.hpp"
 #include "draw/group.hpp"
 #include "draw/polygon.hpp"
@@ -14,11 +16,11 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    vector<Vector> v;
+    vector<Vector> points;
     for (int i = 0; i < N; i++)
     {
         float t = (float) (2*M_PI * ((float)i/N));
-        v.push_back
+        points.push_back
         (
             {
                 (float) (2*cos(t) - cos(2*t)),
@@ -30,7 +32,11 @@ int main(int argc, char *argv[])
     Scene::init();
     Scene::setCoordsLim(-4, 4, -4, 4);
 
-    Scene::objects->add(new Line(v));
+    Scene::objects->add(new Line(points, nullptr, [](void)
+        {
+            glRotatef(1.f, 0.f, 0.f, 1.f);
+        }
+    ));
 
     Scene::start("Test");
 

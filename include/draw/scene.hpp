@@ -16,10 +16,7 @@ namespace Scene
 
     void setCoordsLim(float xmin, float xmax, float ymin, float ymax);
 
-    void draw(void);
-
     void start(const char *title);
-
     void cleanup(bool destroyObjects=false);
 };
 
