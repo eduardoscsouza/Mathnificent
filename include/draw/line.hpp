@@ -14,9 +14,9 @@ class Line : public Drawable
         std::vector<Vector> points;
 
     public:
-        Line(std::size_t nVectors, const Vector * const p);
-        Line(const std::vector<Vector>& p);
-        Line(std::initializer_list<Vector> p);
+        Line(std::size_t nVectors, const Vector * const p, UpdateFunction update=nullptr);
+        Line(const std::vector<Vector>& p, UpdateFunction update=nullptr);
+        Line(std::initializer_list<Vector> p, UpdateFunction update=nullptr);
 
         void draw(void) const override;
         Vector& operator[](int i);

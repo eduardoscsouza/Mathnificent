@@ -5,12 +5,14 @@
 
 using namespace std;
 
-Group::Group(const vector<Drawable*>& l)
+Group::Group(const vector<Drawable*>& l, UpdateFunction update)
+    : Drawable(update)
 {
     this->objects = vector<Drawable*>(l);
 }
 
-Group::Group(initializer_list<Drawable*> l)
+Group::Group(initializer_list<Drawable*> l, UpdateFunction update)
+    : Drawable(update)
 {
     this->objects = vector<Drawable*>(l);
 }

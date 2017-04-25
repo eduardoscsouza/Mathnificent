@@ -13,8 +13,8 @@ class Group : public Drawable {
 
     public:
         Group(void) {}
-        Group(const std::vector<Drawable*>& l);
-        Group(std::initializer_list<Drawable*> l);
+        Group(const std::vector<Drawable*>& l, UpdateFunction update=nullptr);
+        Group(std::initializer_list<Drawable*> l, UpdateFunction update=nullptr);
 
         void draw(void) const override;
         void add(Drawable *d);
