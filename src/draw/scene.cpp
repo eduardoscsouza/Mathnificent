@@ -25,8 +25,6 @@ void Scene::init(int *argc, char *argv[])
 
     glutInit(argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
-
-    glutInitWindowSize(500, 500);
 }
 
 void Scene::setCoordsLim(float x, float X, float y, float Y)
@@ -46,6 +44,7 @@ void Scene::draw(void)
 
 void Scene::start(const char *title)
 {
+    glutInitWindowSize(500, 500);
     glutCreateWindow(title);
 
     gluOrtho2D(xmin, xmax, ymin, ymax);
