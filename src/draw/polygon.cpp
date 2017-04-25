@@ -5,23 +5,35 @@
 
 using namespace std;
 
-Polygon::Polygon(size_t nVectors, const Vector * const p, bool fill, UpdateFunction update, PreDrawFunction preDraw)
-    : Drawable(update, preDraw)
+Polygon::Polygon(size_t nVectors, const Vector * const p,
+        bool fill,
+        UpdateFunction update,
+        PreDrawFunction preDraw,
+        PostDrawFunction postDraw)
+    : Drawable(update, preDraw, postDraw)
 {
     for (size_t i = 0; i < nVectors; i++)
         this->vertices.push_back(p[i]);
     this->fill = fill;
 }
 
-Polygon::Polygon(const vector<Vector>& p, bool fill, UpdateFunction update, PreDrawFunction preDraw)
-    : Drawable(update, preDraw)
+Polygon::Polygon(const vector<Vector>& p,
+        bool fill,
+        UpdateFunction update,
+        PreDrawFunction preDraw,
+        PostDrawFunction postDraw)
+    : Drawable(update, preDraw, postDraw)
 {
     this->vertices = vector<Vector>(p);
     this->fill = fill;
 }
 
-Polygon::Polygon(initializer_list<Vector> p, bool fill, UpdateFunction update, PreDrawFunction preDraw)
-    : Drawable(update, preDraw)
+Polygon::Polygon(initializer_list<Vector> p,
+        bool fill,
+        UpdateFunction update,
+        PreDrawFunction preDraw,
+        PostDrawFunction postDraw)
+    : Drawable(update, preDraw, postDraw)
 {
     this->vertices = vector<Vector>(p);
     this->fill = fill;
@@ -29,7 +41,7 @@ Polygon::Polygon(initializer_list<Vector> p, bool fill, UpdateFunction update, P
 
 void Polygon::draw(void) const
 {
-    Drawable::draw();
+    this->preDraw();
     glBegin(this->fill ? GL_POLYGON : GL_LINE_STRIP);
         for_each(
             this->vertices.begin(),
@@ -41,6 +53,7 @@ void Polygon::draw(void) const
         );
         glVertex3f(this->vertices[0].x, this->vertices[0].y, this->vertices[0].z);
     glEnd();
+    this->postDraw();
 }
 
 Vector& Polygon::operator[](int i)

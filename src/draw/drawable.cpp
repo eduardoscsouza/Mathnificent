@@ -9,16 +9,23 @@ void defaultUpdate(float t, float dt)
 }
 
 void defaultPreDraw(void) {}
+void defaultPostDraw(void) {}
 
-Drawable::Drawable(UpdateFunction update, PreDrawFunction preDraw)
+Drawable::Drawable(
+        UpdateFunction update,
+        PreDrawFunction preDraw,
+        PostDrawFunction postDraw)
 {
     if (update == nullptr)
         update = &defaultUpdate;
     if (preDraw == nullptr)
         preDraw = &defaultPreDraw;
+    if (postDraw == nullptr)
+        postDraw = &defaultPostDraw;
 
     this->updateFunc = update;
     this->preDrawFunc = preDraw;
+    this->postDrawFunc = postDraw;
 }
 
 void Drawable::update(float t, float dt)
@@ -31,7 +38,7 @@ void Drawable::preDraw(void) const
     this->preDrawFunc();
 }
 
-void Drawable::draw(void) const
+void Drawable::postDraw(void) const
 {
-    this->preDraw();
+    this->postDrawFunc();
 }

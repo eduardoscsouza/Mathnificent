@@ -12,6 +12,8 @@
 
 #define N 300
 
+#define DEG_PER_SEC 1.f
+
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -29,12 +31,27 @@ int main(int argc, char *argv[])
         );
     }
 
+    float angle = 0.f;
+
     Scene::init();
     Scene::setCoordsLim(-4, 4, -4, 4);
 
-    Scene::objects->add(new Line(points, nullptr, [](void)
+    Scene::objects->add(new Line(points,
+        [&angle](float t, float dt)
         {
-            glRotatef(1.f, 0.f, 0.f, 1.f);
+            angle = t*DEG_PER_SEC;
+            cout << angle << endl;
+        },
+        [angle](void)
+        {
+            cout << "predraw" << endl;
+            glPushMatrix();
+            glRotatef(angle, 0.f, 0.f, 1.f);
+        },
+        [](void)
+        {
+            cout << "postdraw" << endl;
+            glPopMatrix();
         }
     ));
 

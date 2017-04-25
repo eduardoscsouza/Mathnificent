@@ -5,21 +5,27 @@
 
 using namespace std;
 
-Group::Group(const vector<Drawable*>& l, UpdateFunction update, PreDrawFunction preDraw)
-    : Drawable(update, preDraw)
+Group::Group(const vector<Drawable*>& l,
+        UpdateFunction update,
+        PreDrawFunction preDraw,
+        PostDrawFunction postDraw)
+    : Drawable(update, preDraw, postDraw)
 {
     this->objects = vector<Drawable*>(l);
 }
 
-Group::Group(initializer_list<Drawable*> l, UpdateFunction update, PreDrawFunction preDraw)
-    : Drawable(update, preDraw)
+Group::Group(initializer_list<Drawable*> l,
+        UpdateFunction update,
+        PreDrawFunction preDraw,
+        PostDrawFunction postDraw)
+    : Drawable(update, preDraw, postDraw)
 {
     this->objects = vector<Drawable*>(l);
 }
 
 void Group::draw(void) const
 {
-    Drawable::draw();
+    this->preDraw();
     for_each(
         this->objects.begin(),
         this->objects.end(),
@@ -28,6 +34,7 @@ void Group::draw(void) const
             d->draw();
         }
     );
+    this->postDraw();
 }
 
 void Group::add(Drawable *d)

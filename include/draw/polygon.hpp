@@ -19,9 +19,21 @@ class Polygon: public Drawable
     public:
         bool fill;
 
-        Polygon(std::size_t nVectors, const Vector * const p, bool fill=POLY_DEFAULT_FILL, UpdateFunction update=nullptr, PreDrawFunction preDraw=nullptr);
-        Polygon(const std::vector<Vector>& p, bool fill=POLY_DEFAULT_FILL, UpdateFunction update=nullptr, PreDrawFunction preDraw=nullptr);
-        Polygon(std::initializer_list<Vector> p, bool fill=POLY_DEFAULT_FILL, UpdateFunction update=nullptr, PreDrawFunction preDraw=nullptr);
+        Polygon(std::size_t nVectors, const Vector * const p,
+                bool fill=POLY_DEFAULT_FILL,
+                UpdateFunction update=nullptr,
+                PreDrawFunction preDraw=nullptr,
+                PostDrawFunction postDraw=nullptr);
+        Polygon(const std::vector<Vector>& p,
+                bool fill=POLY_DEFAULT_FILL,
+                UpdateFunction update=nullptr,
+                PreDrawFunction preDraw=nullptr,
+                PostDrawFunction postDraw=nullptr);
+        Polygon(std::initializer_list<Vector> p,
+                bool fill=POLY_DEFAULT_FILL,
+                UpdateFunction update=nullptr,
+                PreDrawFunction preDraw=nullptr,
+                PostDrawFunction postDraw=nullptr);
 
         void draw(void) const override;
         Vector& operator[](int i);
