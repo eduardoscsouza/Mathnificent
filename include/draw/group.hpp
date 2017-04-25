@@ -26,6 +26,8 @@ class Group : public Drawable {
                 PostDrawFunction postDraw=nullptr);
 
         void draw(void) const override;
+        void update(float t, float dt) override;
+
         void add(Drawable *d);
         void add(const std::vector<Drawable*>& d);
 

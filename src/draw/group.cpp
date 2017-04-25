@@ -37,6 +37,19 @@ void Group::draw(void) const
     this->postDraw();
 }
 
+void Group::update(float t, float dt)
+{
+    Drawable::update(t, dt);
+    for_each(
+        this->objects.begin(),
+        this->objects.end(),
+        [t, dt](Drawable *d)
+        {
+            d->update(t, dt);
+        }
+    );
+}
+
 void Group::add(Drawable *d)
 {
     this->objects.push_back(d);

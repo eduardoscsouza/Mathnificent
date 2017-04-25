@@ -12,7 +12,7 @@
 
 #define N 300
 
-#define DEG_PER_SEC 1.f
+#define DEG_PER_SEC 10.f
 
 using namespace std;
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         [&angle](float t, float dt)
         {
             angle = t*DEG_PER_SEC;
-            cout << angle << endl;
+            cout << t << endl;
         },
         [angle](void)
         {

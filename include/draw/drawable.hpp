@@ -16,8 +16,8 @@ class Drawable
         Drawable(UpdateFunction update=nullptr, PreDrawFunction=nullptr, PostDrawFunction=nullptr);
 
         virtual void draw(void) const = 0;
+        virtual void update(float t, float dt);
 
-        void update(float t, float dt);
         void preDraw(void) const;
         void postDraw(void) const;
 
