@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Group * Scene::objects;
+Group *Scene::objects;
 
 static float xmin = -1;
 static float xmax = 1;
@@ -46,7 +46,6 @@ void Scene::draw(void)
 
 void Scene::start(const char *title)
 {
-    gluOrtho2D(xmin, xmax, ymin, ymax);
     glutCreateWindow(title);
 
     gluOrtho2D(xmin, xmax, ymin, ymax);
